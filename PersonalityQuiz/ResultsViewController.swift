@@ -10,6 +10,10 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var resultAnswerLabel: UILabel!
+    @IBOutlet weak var resultDefinitionLabel: UILabel!
+    
     var responses: [Answer]
     
     init?(coder: NSCoder, responses: [Answer]) {
@@ -21,17 +25,15 @@ class ResultsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBOutlet weak var resultAnswerLabel: UILabel!
-    @IBOutlet weak var resultDefinitionLabel: UILabel!
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         calculatePersonalityResult()
         navigationItem.hidesBackButton = true
     }
+    
     func calculatePersonalityResult() {
         let frequencyOfAnswers = responses.reduce(into:
-        [AnimalType: Int]()) { (counts, answer) in
+                                                    [AnimalType: Int]()) { (counts, answer) in
             if let existingCount = counts[answer.type] {
                 counts[answer.type] = existingCount + 1
             } else {
@@ -39,7 +41,7 @@ class ResultsViewController: UIViewController {
             }
         }
         let frequentAnswersSorted = frequencyOfAnswers.sorted(by:
-        { (pair1, pair2) in
+                                                                { (pair1, pair2) in
             return pair1.value > pair2.value
         })
         let mostCommonAnswer = frequentAnswersSorted.first!.key
