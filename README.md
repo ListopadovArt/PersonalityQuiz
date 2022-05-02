@@ -2,5 +2,5 @@
 
 a new project using the Single View App template
 
-![Screen-one](Documentation/readme-one.png)
-![Screen-two](Documentation/readme-two.png)
+![Screen-one](Documentation/readmy-one.png)
+![Screen-two](Documentation/readmy-two.png)
